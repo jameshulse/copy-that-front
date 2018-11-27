@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@evermind/eslint-config-base": "^1.11.1",
+    "babel-plugin-styled-components": "^1.9.1",
     "eslint": "^5.9.0",
     "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-react": "^7.11.1"
