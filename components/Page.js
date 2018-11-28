@@ -39,17 +39,16 @@ const GlobalStyle = createGlobalStyle`
 	}
 `;
 
-const Page = ({ children }) =>
-  console.log('rendering page') || (
-    <ThemeProvider theme={{ purple: '#555bcf' }}>
-      <Fragment>
-        <Meta />
-        <Header />
-        <GlobalStyle />
-        <Inner>{children}</Inner>
-      </Fragment>
-    </ThemeProvider>
-  );
+const Page = ({ children }) => (
+  <ThemeProvider theme={{ purple: '#555bcf' }}>
+    <Fragment>
+      <Meta />
+      <Header />
+      <GlobalStyle />
+      <Inner>{children}</Inner>
+    </Fragment>
+  </ThemeProvider>
+);
 
 Page.propTypes = {
   children: PropTypes.node.isRequired,
