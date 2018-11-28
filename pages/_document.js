@@ -14,10 +14,8 @@ export default class MyDocument extends Document {
   render() {
     return (
       <html lang="en">
-        <Head>
-          <title>My page</title>
-          {this.props.styleTags}
-        </Head>
+        {/* Add styled componetns to header */}`
+        <Head>{this.props.styleTags}</Head>
         <body>
           <Main />
           <NextScript />
