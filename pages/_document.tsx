@@ -1,5 +1,5 @@
-import Document, { Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
+import Document, { Head, Main, NextScript } from "next/document";
+import { ServerStyleSheet } from "styled-components";
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
@@ -12,10 +12,11 @@ export default class MyDocument extends Document {
   }
 
   render() {
+    const { styleTags } = this.props as any;
     return (
       <html lang="en">
-        {/* Add styled componetns to header */}`
-        <Head>{this.props.styleTags}</Head>
+        {/* Add styled componetns to header */}
+        <Head>{styleTags}</Head>
         <body>
           <Main />
           <NextScript />
