@@ -1,11 +1,14 @@
 import styled from "styled-components";
+import Test from '../posts/test.mdx';
 
 const Style = styled.div`
   color: ${props => props.theme.purple};
 `;
 
-const content = `lorem`;
 
-const Home = () => <Style>{content}</Style>;
+const Home = () =>
+  <Style>
+    <Test/>
+  </Style>;
 
 export default () => <Home />;

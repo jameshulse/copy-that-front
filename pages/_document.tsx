@@ -15,8 +15,15 @@ export default class MyDocument extends Document {
     const { styleTags } = this.props as any;
     return (
       <html lang="en">
-        {/* Add styled componetns to header */}
-        <Head>{styleTags}</Head>
+        <Head>
+          {/* Add styled componetns to header */}
+          {styleTags}
+          <link
+            rel="icon"
+            type="image/png"
+            href="/favicon.png"
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />

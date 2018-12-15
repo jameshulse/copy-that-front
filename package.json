@@ -8,9 +8,9 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "tsc && next",
-    "build": "tsc && next build",
-    "start": "tsc && next start"
+    "dev": "tsc && node server.js",
+    "build": "tsc && next buid",
+    "start": "tsc && NODE_ENV=production node server.js"
   },
   "husky": {
     "hooks": {
@@ -31,6 +31,7 @@
   "devDependencies": {
     "@types/next": "^7.0.5",
     "@types/styled-components": "^4.1.3",
+    "@zeit/next-mdx": "^1.2.0",
     "@zeit/next-typescript": "^1.1.1",
     "babel-plugin-styled-components": "^1.9.1",
     "husky": "^1.2.0",
