@@ -8,9 +8,9 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "tsc && node server.js",
-    "build": "tsc && next buid",
-    "start": "tsc && NODE_ENV=production node server.js"
+    "dev": "tsc && next",
+    "build": "tsc && next build",
+    "start": "tsc && next start"
   },
   "dependencies": {
     "apollo-boost": "^0.1.22",

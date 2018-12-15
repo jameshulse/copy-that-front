@@ -1,7 +1,6 @@
-import Test from "../posts/test.mdx";
 
 const Home = () => (
-  <Test />
+  <p>hey</p>
 );
 
 export default () => <Home />;
