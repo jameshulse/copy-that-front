@@ -18,11 +18,7 @@ export default class MyDocument extends Document {
         <Head>
           {/* Add styled componetns to header */}
           {styleTags}
-          <link
-            rel="icon"
-            type="image/png"
-            href="/favicon.png"
-          />
+          <link rel="icon" type="image/png" href="/favicon.png" />
         </Head>
         <body>
           <Main />
