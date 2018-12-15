@@ -12,11 +12,6 @@
     "build": "tsc && next build",
     "start": "tsc && next start"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick"
-    }
-  },
   "dependencies": {
     "apollo-boost": "^0.1.22",
     "graphql": "^14.0.2",
@@ -31,11 +26,9 @@
   "devDependencies": {
     "@types/next": "^7.0.5",
     "@types/styled-components": "^4.1.3",
+    "@zeit/next-mdx": "^1.2.0",
     "@zeit/next-typescript": "^1.1.1",
     "babel-plugin-styled-components": "^1.9.1",
-    "husky": "^1.2.0",
-    "prettier": "^1.15.3",
-    "pretty-quick": "^1.8.0",
     "tslint-config-prettier": "^1.17.0",
     "tslint-plugin-prettier": "^2.0.1",
     "typescript": "^3.2.2"
