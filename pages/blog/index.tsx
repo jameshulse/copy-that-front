@@ -1,3 +1,10 @@
+import Link from 'next/link';
+import styled from '../../components/styles/styled-components';
+import IPostMeta from '../../types/IPostMeta';
+import format from 'date-fns/format';
+
+const toWords = (date: string | Date) => format(date, 'Do MMM yyyy');
+
 function importAll(r) {
   return r.keys().map(r);
 }
@@ -7,15 +14,37 @@ const posts = importAll(
   require.context('./', false, /.mdx$/)
 );
 
-const postPreviews = posts
-  .map(({ meta }) =>
-    <a href={meta.link}>
-      <div>
-        <h4>{meta.title}</h4>
-        <p>{meta.date}</p>
-      </div>
+interface IPostPreviewProps {
+  meta: IPostMeta
+}
+
+const PostPreviewCard = styled.div`
+  border-radius: ${props => props.theme.spc}px;
+  box-shadow: ${props => props.theme.standardShadow};
+  padding: ${props => props.theme.spc}px ${props => props.theme.spc * 4}px;
+  margin-bottom: ${props => props.theme.spc * 4}px;
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+`;
+
+const PostPreview = ({ meta }: IPostPreviewProps) =>
+  <Link prefetch href={meta.link}>
+    <a>
+      <PostPreviewCard>
+        <div>
+          <h4>{meta.title}</h4>
+          <p>{toWords(meta.date)}</p>
+        </div>
+        <p>{meta.description}</p>
+      </PostPreviewCard>
     </a>
-  );
+  </Link>;
+
+const postPreviews = posts
+  .map(({ meta }) => <PostPreview meta={meta} />);
 
 export default () =>
   <div>
