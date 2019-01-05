@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "apollo-boost": "^0.1.22",
+    "date-fns": "^2.0.0-alpha.26",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
     "next": "^7.0.2",
