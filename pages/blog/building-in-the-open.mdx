@@ -12,6 +12,8 @@ export const meta = {
   twitterCard: '/static/twitter-cards/building-in-the-open.png',
 };
 
+import EmbeddedTweet from '../../components/EmbeddedTweet';
+
 export default ({ children }) => <div>{children}</div>;
 
 # Why I'm Building in the Open
@@ -60,7 +62,9 @@ If there's one thing I love about being a software engineer, it's that you get t
 
 The benefits of this are super clear. Why work stuff out if other people have already? Even before launching, I started to get help from strangers on the internet (see tweets below) and if I can get people more knowledgeable than myself to answer my questions, then I'm going to seize that opportunity.
 
-- Add tweet storm - [https://twitter.com/mulholio/status/1073662913813143552](https://twitter.com/mulholio/status/1073662913813143552)
+<EmbeddedTweet blockQuoteHtml={`
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Need to pick a CMS to plug into my <a href="https://twitter.com/zeithq?ref_src=twsrc%5Etfw">@zeithq</a> NEXT.js re-build of <a href="https://t.co/mAWLT8k4HH">https://t.co/mAWLT8k4HH</a>. What should I pick?</p>&mdash; James (@mulholio) <a href="https://twitter.com/mulholio/status/1073662913813143552?ref_src=twsrc%5Etfw">December 14, 2018</a></blockquote>
+`}/>
 
 I'd love for this to be a two way process too. Copy That is as much (if not more) about sharing what I am doing with others as it is about me learning from them and the idea that other people will learn from my code and posts is appealing.
 

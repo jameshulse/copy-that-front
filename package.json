@@ -10,8 +10,7 @@
   "scripts": {
     "dev": "tsc && next",
     "build": "tsc && next build",
-    "start": "tsc && next start -p $PORT",
-    "heroku-postbuild": "build"
+    "start": "tsc && next start"
   },
   "dependencies": {
     "apollo-boost": "^0.1.22",

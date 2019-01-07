@@ -16,8 +16,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${props => props.theme.systemFontStack};
 	}
 	a {
-		text-decoration: none;
-    color: ${props => props.theme.black};
+    color: ${props => props.theme.primaryPurple};
 	}
 `;
 

@@ -18,6 +18,12 @@ interface IPostPreviewProps {
   meta: IPostMeta
 }
 
+const PostPreviewLink = styled.a`
+  text-decoration: none;
+  cursor: pointer;
+  color: ${props => props.theme.notBlack};
+`;
+
 const PostPreviewCard = styled.div`
   border-radius: ${props => props.theme.spc}px;
   box-shadow: ${props => props.theme.standardShadow};
@@ -31,8 +37,8 @@ const PostPreviewCard = styled.div`
 `;
 
 const PostPreview = ({ meta }: IPostPreviewProps) =>
-  <Link prefetch href={meta.link}>
-    <a>
+  <Link key={meta.url} prefetch href={meta.link}>
+    <PostPreviewLink>
       <PostPreviewCard>
         <div>
           <h4>{meta.title}</h4>
@@ -40,7 +46,7 @@ const PostPreview = ({ meta }: IPostPreviewProps) =>
         </div>
         <p>{meta.description}</p>
       </PostPreviewCard>
-    </a>
+    </PostPreviewLink>
   </Link>;
 
 const postPreviews = posts
