@@ -30,6 +30,7 @@
     "@zeit/next-mdx": "^1.2.0",
     "@zeit/next-typescript": "^1.1.1",
     "babel-plugin-styled-components": "^1.9.1",
+    "tslint-config-airbnb": "^5.11.1",
     "tslint-config-prettier": "^1.17.0",
     "tslint-plugin-prettier": "^2.0.1",
     "typescript": "^3.2.2"
