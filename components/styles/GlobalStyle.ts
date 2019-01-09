@@ -33,10 +33,12 @@ const GlobalStyle = createGlobalStyle`
 
   h1 {
     font-size: 3.375rem;
+    line-height: 1.2;
   }
 
   h2 {
     font-size: 2.25rem;
+    line-height: 1.25;
   }
 
   h3 {
@@ -48,10 +50,14 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.875rem;
   }
 
-  p {
+  p, li {
     font-size: 1.25rem;
     font-weight: 200;
     line-height: 1.5;
+  }
+
+  li {
+    margin: 0.5rem;
   }
 `;
 
