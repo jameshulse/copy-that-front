@@ -9,6 +9,7 @@
 * Pull in Things
 * More advanced linting
 * More typescripty
+* NProgress
 
 ## Back
 
