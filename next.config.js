@@ -18,7 +18,7 @@ module.exports = (phase, { defaultConfig }) => {
 
   return withTypescript(
     withMDX({
-      pageExtensions: ["js", "jsx", "md", "mdx"]
+      pageExtensions: ["js", "jsx", "ts", "tsx"],
     })
   );
 };
