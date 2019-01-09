@@ -2,13 +2,15 @@ import styled from './styled-components';
 
 const StyledHeader = styled.header`
   display: flex;
+  flex-shrink: 0;
   justify-content: space-between;
+  align-items: center;
   background: ${props => props.theme.purpleGradient};
   color: ${props => props.theme.notWhite};
   padding: ${props => props.theme.spc}px ${props => props.theme.spc * 2}px;
   box-shadow: ${props => props.theme.standardShadow};
 
-  h1 {
+  h1, h4 {
     margin: 0;
   }
 
