@@ -1,5 +1,6 @@
 {
   "version": 2,
-  "builds": [{ "src": "next.config.js", "use": "@now/next" }],
+  "name": "Copy That",
+  "builds": [{ "src": "next.config.js", "use": "@now/next@canary" }],
   "alias": ["copythat.io", "www.copythat.io"]
 }

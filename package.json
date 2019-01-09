@@ -11,14 +11,15 @@
     "dev": "tsc && next",
     "build": "tsc && next build",
     "start": "tsc && next start",
-    "analyse": "ANALYZE=1 yarn build"
+    "analyse": "ANALYZE=1 yarn build",
+    "now-build": "tsc && next build"
   },
   "dependencies": {
     "apollo-boost": "^0.1.22",
     "date-fns": "^2.0.0-alpha.26",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
-    "next": "^7.0.2",
+    "next": "^8.0.0-canary.3",
     "next-with-apollo": "^3.3.0",
     "react": "^16.7.0-alpha.2",
     "react-apollo": "^2.3.1",
