@@ -4,6 +4,7 @@ const { PHASE_PRODUCTION_SERVER } =
     : !process.env.NOW_REGION
     ? require("next/constants") // Get values from `next` package when building locally
     : require("next-server/constants"); // Get values from `next-server` package when building on now v2
+const { ANALYZE } = process.env
 
 module.exports = (phase, { defaultConfig }) => {
   if (phase === PHASE_PRODUCTION_SERVER) {
@@ -18,6 +19,20 @@ module.exports = (phase, { defaultConfig }) => {
 
   return withTypescript(
     withMDX({
+      webpack: function (config, { isServer }) {
+        if (ANALYZE) {
+          const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+
+          config.plugins.push(new BundleAnalyzerPlugin({
+            analyzerMode: 'static',
+            openAnalyzer: true,
+            defaultSizes: 'gzip',
+            generateStatsFile: true
+          }));
+        }
+
+        return config;
+      },
       pageExtensions: ["js", "jsx", "ts", "tsx"],
     })
   );

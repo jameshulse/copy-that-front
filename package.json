@@ -10,7 +10,8 @@
   "scripts": {
     "dev": "tsc && next",
     "build": "tsc && next build",
-    "start": "tsc && next start"
+    "start": "tsc && next start",
+    "analyse": "ANALYZE=1 yarn build"
   },
   "dependencies": {
     "apollo-boost": "^0.1.22",
@@ -33,6 +34,7 @@
     "tslint-config-airbnb": "^5.11.1",
     "tslint-config-prettier": "^1.17.0",
     "tslint-plugin-prettier": "^2.0.1",
-    "typescript": "^3.2.2"
+    "typescript": "^3.2.2",
+    "webpack-bundle-analyzer": "^3.0.3"
   }
 }
