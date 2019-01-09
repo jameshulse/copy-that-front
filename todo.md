@@ -8,6 +8,7 @@
 * Add Things upload
 * Pull in Things
 * More advanced linting
+* More typescripty
 
 ## Back
 

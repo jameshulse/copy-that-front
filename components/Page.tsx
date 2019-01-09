@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import Header from "./Header";
+import Footer from './Footer';
 import Meta from "./Meta";
 import styled, { ThemeProvider } from "./styles/styled-components";
 import GlobalStyle from './styles/GlobalStyle';
@@ -19,6 +20,7 @@ const Page = ({ children }) => (
       <Header />
       <GlobalStyle />
       <Inner>{children}</Inner>
+      <Footer/>
     </Fragment>
   </ThemeProvider>
 );

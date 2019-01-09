@@ -12,17 +12,21 @@ export default () =>
     <HeaderNav>
       <ul>
         <Link prefetch href='/blog'>
-          <li>Blog</li>
+          <li>
+            <h4>Blog</h4>
+          </li>
         </Link>
       </ul>
       <ul>
         <Link prefetch href='/about'>
-          <li>About</li>
+  <li>
+    <h4>About</h4>
+  </li>
         </Link>
       </ul>
       <ul>
         <Link prefetch href='/newsletter'>
-          <li>Newsletter</li>
+          <li><h4>Newsletter</h4></li>
         </Link>
       </ul>
     </HeaderNav>
