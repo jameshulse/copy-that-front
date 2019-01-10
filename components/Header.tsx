@@ -20,8 +20,6 @@ export default () =>
         </Link>
       </ul>
       <ul>
-      </ul>
-      <ul>
         <a href='https://pages.convertkit.com/901126d022/14dd00220e'>
           <li>
             <h4>Newsletter</h4>
