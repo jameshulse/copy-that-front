@@ -12,22 +12,21 @@ export default () =>
     <HeaderNav>
       <ul>
         <Link prefetch href='/blog'>
+          <a>
+            <li>
+              <h4>Blog</h4>
+            </li>
+          </a>
+        </Link>
+      </ul>
+      <ul>
+      </ul>
+      <ul>
+        <a href='https://pages.convertkit.com/901126d022/14dd00220e'>
           <li>
-            <h4>Blog</h4>
+            <h4>Newsletter</h4>
           </li>
-        </Link>
-      </ul>
-      <ul>
-        <Link prefetch href='/about'>
-  <li>
-    <h4>About</h4>
-  </li>
-        </Link>
-      </ul>
-      <ul>
-        <Link prefetch href='/newsletter'>
-          <li><h4>Newsletter</h4></li>
-        </Link>
+        </a>
       </ul>
     </HeaderNav>
   </StyledHeader>;

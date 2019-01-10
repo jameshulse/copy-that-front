@@ -17,10 +17,12 @@ const PostPreviewCard = styled.div`
   box-shadow: ${props => props.theme.standardShadow};
   padding: ${props => props.theme.spc}px ${props => props.theme.spc * 4}px;
   margin-bottom: ${props => props.theme.spc * 4}px;
-  div {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+  h3 {
+    line-height: 1.25;
+    color: ${props => props.theme.deepPurple};
+  }
+  span {
+    
   }
 `;
 
@@ -28,10 +30,8 @@ const PostPreview = ({ meta }: { meta: BlogPostMeta }) =>
   <Link key={meta.url} prefetch href={meta.link}>
     <PostPreviewLink>
       <PostPreviewCard>
-        <div>
-          <h4>{meta.title}</h4>
-          <p>{toWords(meta.date)}</p>
-        </div>
+        <h3>{meta.title}</h3>
+        <span>{toWords(meta.date)}</span>
         <p>{meta.description}</p>
       </PostPreviewCard>
     </PostPreviewLink>

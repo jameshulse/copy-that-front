@@ -1,7 +1,7 @@
 import styled, { css } from './styled-components';
 
 const buttonCSS = css`
-  padding: 0.5em 1em;
+  padding: 1em;
   background: ${props => props.theme.purpleGradient};
   color: ${props => props.theme.white};
   text-transform: uppercase;

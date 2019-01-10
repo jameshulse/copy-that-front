@@ -3,14 +3,13 @@
 ## Front
 * Mobile responsive
 * Link to newsletter properly
-* Analytics
-* Remove about page link
 * Refine styling
 * Add Things upload
 * Pull in Things to homepage
 * Add all the things
 * NProgress
 * Add about page
+* Add a newsletter page (once the Things are loading)
 * More advanced linting
 * More typescripty
 * Check that i'm using typed styled components everywhere
@@ -26,3 +25,5 @@
 # Done
 * Linting (basic)
 * Footer
+* Remove about page link
+* Analytics
