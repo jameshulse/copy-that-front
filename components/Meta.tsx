@@ -1,5 +1,6 @@
 import Head from "next/head";
 import defaultSEO from '../lib/defaultSEO';
+import { GA_TRACKING_ID } from '../lib/gtag';
 
 export default () => (
   <Head>
@@ -16,5 +17,16 @@ export default () => (
     <meta key="og:image" name="og:image" content={defaultSEO.openGraph.image}/>
     <meta key="og:image:width" name="og:image:width" content={`${defaultSEO.openGraph.imageWidth}`}/>
     <meta key="og:image:height" name="og:image:height" content={`${defaultSEO.openGraph.imageHeight}`}/>
+  {/* Google Analytics */}
+  <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}></script>
+  <script
+  dangerouslySetInnerHTML={{
+    __html: `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-122265749-1');
+    `
+  }}/>
   </Head>
 );

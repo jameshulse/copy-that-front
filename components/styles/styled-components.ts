@@ -2,10 +2,7 @@ import * as styledComponents from 'styled-components';
 import { ThemedStyledComponentsModule } from 'styled-components';
 import { ITheme } from './theme';
 
-/*
- * This file adds TypeScript support for styled-components
- */
-
+// add TypeScript support for styled-components
 const {
   default: styled,
   css,

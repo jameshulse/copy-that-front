@@ -1,4 +1,5 @@
 import styled from './styled-components';
+import media from './media';
 
 const StyledHeader = styled.header`
   display: flex;
@@ -9,6 +10,11 @@ const StyledHeader = styled.header`
   color: ${props => props.theme.notWhite};
   padding: ${props => props.theme.spc}px ${props => props.theme.spc * 2}px;
   box-shadow: ${props => props.theme.standardShadow};
+  flex-wrap: wrap;
+  ${media.tablet`
+    flex-direction: column;
+    text-align: center;
+  `}
 
   h1, h4 {
     margin: 0;

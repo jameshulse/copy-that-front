@@ -1,4 +1,5 @@
 import styled from './styled-components';
+import media from './media';
 
 const StyledFooter = styled.footer`
   flex-shrink: 0;
@@ -25,11 +26,24 @@ const StyledFooter = styled.footer`
     line-height: 1.5;
   }
 
+  .cta-text a {
+    text-decoration: none;
+  }
+
   .small-print {
     display: flex;
     justify-content: space-between;
     border-top: 1px solid ${props => props.theme.notWhite};
   }
+
+  ${media.mobile`
+    .sign-up {
+      display: none;
+    }
+    .cta-text a {
+      text-decoration: underline;
+    }
+  `}
 
   a {
     color: ${props => props.theme.notWhite};
