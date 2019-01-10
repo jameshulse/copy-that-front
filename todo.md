@@ -13,6 +13,7 @@
 * Add about page
 * More advanced linting
 * More typescripty
+* Check that i'm using typed styled components everywhere
 
 ## Back
 * 
