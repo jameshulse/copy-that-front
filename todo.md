@@ -15,7 +15,9 @@
 * Check that i'm using typed styled components everywhere
 
 ## Back
-* 
+* Related skills
+* Popularity
+* Add a yarn script to send generated types to frontend: https://www.prisma.io/docs/1.15/use-prisma-api/prisma-bindings/code-generation-frr1/
 
 ## WRITE!
 
