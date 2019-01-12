@@ -14,8 +14,6 @@
     "analyse": "ANALYZE=1 yarn build"
   },
   "dependencies": {
-    "@types/react": "^16.7.18",
-    "@types/react-dom": "^16.0.11",
     "apollo-boost": "^0.1.22",
     "date-fns": "^2.0.0-alpha.26",
     "graphql": "^14.0.2",

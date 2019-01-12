@@ -1,47 +1,88 @@
 import * as React  from 'react';
+import gql from 'graphql-tag';
+import { Mutation } from 'react-apollo';
+import Button from './styles/StyledButton';
+import styled from './styles/styled-components';
 
-/* CURRENT STATE OF THIS PAGE:
- * Working on getting the inputs working
- * TODOs are a good guide: getting prisma types in would be great
- * Nothing tested (strictly or visually)
- *
- * TODO control props usng the userReducer setState
- * TODO style
- * TODO add prisma type import
+/*
+ * CURRENT STATE OF THIS PAGE:
+ * TODO images
  * TODO test
  */
 
 
-// TODO make this a generated difficulty enum from prisma
-enum Difficulty {
-  HIGH = 'high',
-  MEDIUM = 'medium',
-  LOW = 'low',
-}
+const FormStyles = styled.div`
+  box-shadow: ${props => props.theme.standardShadow};
+  padding: 32px;
+  border-radius: 8px;
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    padding: 0;
+  }
+  label > span {
+    display: block;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+  }
+  input, textarea {
+    width: 100%;
+  }
+
+  button {
+    margin-top: 8px;
+  }
+`;
+
+const CREATE_THAT_MUTATION = gql`
+  mutation CREATE_THAT_MUTATION(
+    $title: String!
+    $description: String!
+    $source: String!
+    $tags: [String]!
+    $skills: [String]!
+    $difficulty: Difficulty!
+  ) {
+    createThat(
+      title: $title
+      description: $description
+      source: $source
+      tags: $tags
+      skills: $skills
+      difficulty: $difficulty
+    ) {
+      id
+      title
+      skills
+      difficulty
+      tags
+    }
+  }
+`;
+
+type Difficulty = 'HIGH' | 'MEDIUM' | 'LOW';
 
 interface NewThingFormState {
   title: string;
   description: string;
   source: string;
-  tags: string[];
-  skills: string[];
+  tags: string; // converted to array later
+  skills: string; // convewrted to array later
   difficulty: Difficulty;
   // TODO image
 };
 
 const NewThingForm = () => {
   // TODO image
-  // TODO difficulty
-  // TODO tags
-  // TODO skills
-
   const defaultState: NewThingFormState = {
     title: '',
     description: '',
     source: '',
-    tags: [],
-    skills: [],
-    difficulty: Difficulty.MEDIUM,
+    tags: '',
+    skills: '',
+    difficulty: 'MEDIUM',
   };
 
   const [state, setState] = React.useReducer(
@@ -54,39 +95,97 @@ const NewThingForm = () => {
 
   // TODO type this properly. Needs to match input props
   const handleChange: React.EventHandler<any> = ({ target }) => {
-    // TODO type cast the value if I use a number
     setState({ [target.name]: target.value });
   };
 
+  const formatToArray = (s: string) =>
+    s.toLowerCase().split(', ').filter(s => s !== '');
+
   return (
-  <div>
-    <form>
-      <fieldset>
-        <Input<'text', string>
-          name='title'
-          type='text'
-          value={state.title}
-          changeHandler={handleChange}
-        />
-        <Input<'textarea', string>
-          name='description'
-          type='textarea'
-          value={state.description}
-          changeHandler={handleChange}
-        />
-        <Input<'text', string>
-          name='source'
-          type='text'
-          value={state.source}
-          changeHandler={handleChange}
-          placeholder='https://somesite.com'
-        />
-        {/* TODO difficulty */}
-        {/* TODO tags */}
-        {/* TODO skills */}
-      </fieldset>
-    </form>
-  </div>
+  <FormStyles>
+    <Mutation
+      mutation={CREATE_THAT_MUTATION}
+      variables={{
+        ...state,
+        // split strings into formatted arrays
+        tags: formatToArray(state.tags),
+        skills: formatToArray(state.skills),
+      }}
+    >
+      {
+        (createThat, { error, loading }) => {
+          if (loading) return <p>Loading</p>
+          if (error) return <p>Error: {error.message}</p>
+          return (
+            <form onSubmit={async e => {
+              e.preventDefault();
+              console.log('creating');
+              console.log({
+                ...state,
+                tags: state.tags.toLowerCase().split(', '),
+              });
+              const res = await createThat();
+              console.log('created: ', res);
+            }}>
+              <fieldset>
+                <Input<'text', string>
+                  name='title'
+                  type='text'
+                  value={state.title}
+                  changeHandler={handleChange}
+                />
+                <Input<'textarea', string>
+                  name='description'
+                  type='textarea'
+                  value={state.description}
+                  changeHandler={handleChange}
+                />
+                <Input<'text', string>
+                  name='source'
+                  type='text'
+                  value={state.source}
+                  changeHandler={handleChange}
+                  placeholder='https://somesite.com'
+                />
+                <label>
+                  <span>difficulty</span>
+                  <select
+                    name='difficulty'
+                    value={state.difficulty}
+                    onChange={handleChange}
+                  >
+                    <option value='EASY'>Easy</option>
+                    <option value='MEDIUM'>Medium</option>
+                    <option value='HARD'>Hard</option>
+                  </select>
+                </label>
+                <Input
+                  name='tags'
+                  type='text'
+                  value={state.tags}
+                  changeHandler={handleChange}
+                  placeholder='Animations, '
+                />
+                <Input
+                  name='skills'
+                  type='text'
+                  value={state.skills}
+                  changeHandler={handleChange}
+                />
+                <p>
+                  Note: Tags and skills should be comma-seperated and kebab-case
+                  e.g. animations, flex-box, css-grid
+                </p>
+              </fieldset>
+              <Button type="submit">
+                Upload
+              </Button>
+            </form>
+          );
+        }
+      }
+    </Mutation>
+  </FormStyles>
   );
 }
 
@@ -112,7 +211,7 @@ const Input = <I extends Input, V extends Value>({
   placeholder,
 }: InputProps<I, V>) =>
   <label htmlFor={name}>
-    {name}
+    <span>{name}</span>
     {
       type === 'textarea'
         ? <textarea
