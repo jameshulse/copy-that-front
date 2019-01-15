@@ -4,14 +4,13 @@ import Button from '../styles/StyledButton';
 import FormStyles from './NewThingFormStyles';
 import CREATE_THAT_MUTATION from './createThatMutation';
 import Input from './Input';
+import { Difficulty } from '../../schema';
 
 /*
  * CURRENT STATE OF THIS PAGE:
  * TODO pleasant form validation
  * TODO test
  */
-
-export type Difficulty = 'HIGH' | 'MEDIUM' | 'LOW';
 
 interface NewThingFormState {
   title: string;

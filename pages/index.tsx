@@ -1,2 +1,8 @@
 import Content from './index.mdx';
-export default Content;
+import Thats from '../components/Thats';
+
+export default () =>
+  <>
+    <Content/>
+    <Thats />
+  </>;
