@@ -1,5 +1,9 @@
 {
   "version": 2,
   "builds": [{ "src": "next.config.js", "use": "@now/next" }],
-  "alias": ["copythat.io", "www.copythat.io"]
+  "alias": ["copythat.io", "www.copythat.io"],
+  "routes": [
+    {"src": "/that/(?<id>.+)", "dest": "/that.js?id=$id"},
+    {"src": "/(.*)", "dest": "/$1"}
+  ]
 }
