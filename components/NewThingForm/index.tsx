@@ -1,68 +1,17 @@
 import * as React  from 'react';
-import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
-import Button from './styles/StyledButton';
-import styled from './styles/styled-components';
+import Button from '../styles/StyledButton';
+import FormStyles from './NewThingFormStyles';
+import CREATE_THAT_MUTATION from './createThatMutation';
+import Input from './Input';
 
 /*
  * CURRENT STATE OF THIS PAGE:
- * TODO images
+ * TODO pleasant form validation
  * TODO test
  */
 
-
-const FormStyles = styled.div`
-  box-shadow: ${props => props.theme.standardShadow};
-  padding: 32px;
-  border-radius: 8px;
-  fieldset {
-    display: flex;
-    flex-direction: column;
-    border: none;
-    padding: 0;
-  }
-  label > span {
-    display: block;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 12px;
-  }
-  input, textarea {
-    width: 100%;
-  }
-
-  button {
-    margin-top: 8px;
-  }
-`;
-
-const CREATE_THAT_MUTATION = gql`
-  mutation CREATE_THAT_MUTATION(
-    $title: String!
-    $description: String!
-    $source: String!
-    $tags: [String]!
-    $skills: [String]!
-    $difficulty: Difficulty!
-  ) {
-    createThat(
-      title: $title
-      description: $description
-      source: $source
-      tags: $tags
-      skills: $skills
-      difficulty: $difficulty
-    ) {
-      id
-      title
-      skills
-      difficulty
-      tags
-    }
-  }
-`;
-
-type Difficulty = 'HIGH' | 'MEDIUM' | 'LOW';
+export type Difficulty = 'HIGH' | 'MEDIUM' | 'LOW';
 
 interface NewThingFormState {
   title: string;
@@ -71,11 +20,11 @@ interface NewThingFormState {
   tags: string; // converted to array later
   skills: string; // convewrted to array later
   difficulty: Difficulty;
-  // TODO image
+  image: string;
+  largeImage: string;
 };
 
 const NewThingForm = () => {
-  // TODO image
   const defaultState: NewThingFormState = {
     title: '',
     description: '',
@@ -83,6 +32,8 @@ const NewThingForm = () => {
     tags: '',
     skills: '',
     difficulty: 'MEDIUM',
+    image: '',
+    largeImage: '',
   };
 
   const [state, setState] = React.useReducer(
@@ -96,6 +47,27 @@ const NewThingForm = () => {
   // TODO type this properly. Needs to match input props
   const handleChange: React.EventHandler<any> = ({ target }) => {
     setState({ [target.name]: target.value });
+  };
+
+  const uploadFile = async e => {
+    const files = e.target.files;
+    if (files.length < 1) {
+      setState({ image: '', largeImage: '' });
+      return;
+    }
+    const data = new FormData();
+    data.append('file', files[0]);
+    // append Cloudinary upload preset
+    data.append('upload_preset', 'copy-that-that');
+    const res = await fetch('https://api.cloudinary.com/v1_1/copy-that/image/upload', {
+      method: 'POST',
+      body: data,
+    });
+    const file = await res.json();
+    setState({
+      image: file.secure_url,
+      largeImage: file.eager[0].secure_url,
+    });
   };
 
   const formatToArray = (s: string) =>
@@ -125,9 +97,19 @@ const NewThingForm = () => {
                 tags: state.tags.toLowerCase().split(', '),
               });
               const res = await createThat();
-              console.log('created: ', res);
+              console.log('res: ', res);
+              // TODO redirect to That page
             }}>
               <fieldset>
+                <label htmlFor='file'>
+                  Image
+                  <input
+                    name="file"
+                    id='file'
+                    onChange={uploadFile}
+                    type="file"
+                  />
+                </label>
                 <Input<'text', string>
                   name='title'
                   type='text'
@@ -188,48 +170,5 @@ const NewThingForm = () => {
   </FormStyles>
   );
 }
-
-// INPUT ==================================================
-
-type Input = 'text' | 'number' | 'textarea';
-type Value = string | number;
-
-interface InputProps<I extends Input, V extends Value> {
-  name: string;
-  type: I;
-  value: V;
-  changeHandler: React.EventHandler<any>;
-  placeholder?: string;
-}
-
-/** A Generic, labelled input for a form */
-const Input = <I extends Input, V extends Value>({
-  name,
-  value,
-  type,
-  changeHandler,
-  placeholder,
-}: InputProps<I, V>) =>
-  <label htmlFor={name}>
-    <span>{name}</span>
-    {
-      type === 'textarea'
-        ? <textarea
-            id={name}
-            name={name}
-            value={value}
-            onChange={changeHandler}
-            placeholder={placeholder}
-          />
-        : <input
-            id={name}
-            name={name}
-            type={type}
-            value={value}
-            onChange={changeHandler}
-            placeholder={placeholder}
-          />
-    }
-  </label>;
 
 export default NewThingForm;
