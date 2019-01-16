@@ -2,7 +2,6 @@ import styled from '../styles/styled-components';
 
 const ThatCardStyles = styled.div`
   box-shadow: ${props => props.theme.standardShadow};
-  max-width: 256px;
   border-radius: 16px;
   padding: 16px;
   a {

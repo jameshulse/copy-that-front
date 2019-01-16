@@ -2,6 +2,15 @@ import * as React from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import ThatCard from './ThatCard';
+import ThatsStyles from './ThatsStyles';
+
+/**
+ * Takes an array and concats the first element to increase
+ * it's length to the given number
+ */
+function dupe<T>(num: number, arr: T[]): T[] {
+  return num === 0 ? arr : dupe(num-1, arr.concat(arr[0]));
+}
 
 const ALL_THATS_QUERY = gql`
   query ALL_THATS_QUERY {
@@ -18,13 +27,13 @@ const ALL_THATS_QUERY = gql`
 `;
 
 const Thats = () =>
-  <div>
+  <ThatsStyles>
     <Query query={ALL_THATS_QUERY}>
     {
       ({ data }) =>
-        data.thats.map(that => <ThatCard that={that} />)
+        dupe(12, data.thats).map(that => <ThatCard that={that} />)
     }
     </Query>
-  </div>;
+  </ThatsStyles>;
 
 export default Thats;

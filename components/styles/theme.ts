@@ -1,6 +1,7 @@
 export interface ITheme {
   // spacing
   maxWidth: number,
+  maxWidthLarge: number,
   spc: number,
   // colors
   black: '#000',
@@ -22,6 +23,7 @@ export interface ITheme {
 const theme: ITheme = {
   // spacing
   maxWidth: 720,
+  maxWidthLarge: 1028,
   spc: 8, // the grid size
   // colors
   black: '#000',

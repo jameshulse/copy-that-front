@@ -1,8 +1,8 @@
-import Content from './index.mdx';
+import Hero from '../components/Hero';
 import Thats from '../components/Thats';
 
 export default () =>
   <>
-    <Content/>
+    <Hero/>
     <Thats />
   </>;

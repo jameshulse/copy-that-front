@@ -9,10 +9,8 @@ import theme from './styles/theme';
 import * as gtag from '../lib/gtag'
 
 const Inner = styled.div`
-  max-width: ${props => props.theme.maxWidth}px;
-  margin: 0 auto;
-  padding: 2rem;
   flex-grow: 1;
+  width: 100%;
 `;
 
 // Set Google Analytics to track page views

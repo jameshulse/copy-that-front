@@ -1,7 +1,9 @@
 # Todos
 
 ## Front
+* Ensure Google analytics tracks page loads from server: https://segment.com/pricing/
 * Pull in Things to homepage
+* Remove spc
 * Refine styling
 * NProgress
 * Add about page
@@ -11,6 +13,7 @@
    * refactor style to 4 spaces
 * Check that i'm using typed styled components everywhere
 * Add autocomplete on tags via downshift or similar
+* Make header disappear initially, then appear when you scroll down
 
 ## Back
 * Make sure pre-existing skills can be selected properly

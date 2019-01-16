@@ -17,4 +17,14 @@ export const event = ({ action, category, label, value }) => {
     event_label: label,
     value: value
   })
-}
+};
+
+/*
+ * Example of how to log an event anywhere in the app:
+ *
+ * gtag.event({
+ *   action: 'submit_form',
+ *   category: 'Contact',
+ *   label,
+ * });
+ */

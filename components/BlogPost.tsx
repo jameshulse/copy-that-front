@@ -1,6 +1,11 @@
 import * as React from 'react';
 import Head from 'next/head';
 import defaultSEO from '../lib/defaultSEO';
+import styled from './styles/styled-components';
+
+const BlogContainer = styled.div`
+  max-width: ${props => props.theme.maxWidth}px;
+`;
 
 interface BlogAuthor {
   name: string,
@@ -33,9 +38,9 @@ const BlogPost = ({ meta, children }: BlogPostProps) =>
       <meta key="og:description" name="og:description" content={meta.description}/>
       <meta key="og:image" name="og:image" content={meta.twitterCard ? meta.twitterCard : defaultSEO.openGraph.image}/>
     </Head>
-    <div>
+    <BlogContainer>
       {children}
-    </div>
+    </BlogContainer>
   </>;
 
 export default BlogPost;
